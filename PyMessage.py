@@ -1,42 +1,44 @@
 import threading
 import socket
 
-class listener(threading.thread):
+class Listener(threading.Thread):
 	def run(self):
-		listen = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-		listen.bind((messenger.host, messenger.port))
-		while true:
-			message = listen.recv(1024)
-			print(message)
-			if message == "bye":
-				break
-		listen.shutdown()
-		listen.close()
-		
-		
-class sender:
-	def send(self):
 		sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-		sock.connect((messenger.host, messenger.port))
+		sock.bind((socket.gethostname(),1551))
+		sock.listen(10)
+		conn, addr = sock.accept()
+		
+		print("Received a connection.")
+		print("Say hi!")
+		
 		while true:
-			text = raw_input()
-			text = str(text)
-			if text == "bye":
-				sock.send(text)
+			message = conn.recv(1024)
+			print(str(message.decode()))
+			if str(message.decode()) == "bye":
 				break
-			sock.send(text)
+			
+		conn.close()
+		sock.close()
 		
-	
-class main:
+class Sender:
 	def main(self):
-		print("Connect to:")
-		self.host = raw_input()
-		self.host = str(self.host)
-		self.port = 1551
-		listen = listener()
-		listen.start()
-		send = sender()
-		send.send()
+		print("Welcome.")
+		print("Enter a username:")
+		name = str(raw_input())
+		print("Enter an IP address to chat with.")
+		host = str(raw_input())
+		connection = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+		connection.connect((host, 1551))
+		print("Connected to " + host + ".")
 		
-messenger = main()
-main.main()
+		while true:
+			message = str(raw_input())
+			sock.send(message.encode())
+		sock.close()
+
+send = Sender()
+listen = Listener()
+
+listen.start()
+
+send.main()
