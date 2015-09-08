@@ -1,44 +1,26 @@
+#One computer will have to handle acting as a client and the other
+#will handle all the server operations.
+
 import threading
 import socket
 
-class Listener(threading.Thread):
-	def run(self):
-		sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-		sock.bind((socket.gethostname(),1551))
-		sock.listen(10)
-		conn, addr = sock.accept()
-		
-		print("Received a connection.")
-		print("Say hi!")
-		
-		while true:
-			message = conn.recv(1024)
-			print(str(message.decode()))
-			if str(message.decode()) == "bye":
-				break
-			
-		conn.close()
-		sock.close()
-		
-class Sender:
-	def main(self):
-		print("Welcome.")
-		print("Enter a username:")
-		name = str(raw_input())
-		print("Enter an IP address to chat with.")
-		host = str(raw_input())
-		connection = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-		connection.connect((host, 1551))
-		print("Connected to " + host + ".")
-		
-		while true:
-			message = str(raw_input())
-			sock.send(message.encode())
-		sock.close()
+class Client(threading.Thread):
+        def main(self, name, host):
+                self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+                self.sock.connect((host, 1551))
+                print("Connected to " + host + ".")
+                while True:
+                        message = str(input())
+                        message = str(name) + ": " + str(message)
+                        self.sock.send(message.encode())
+                        self.sock.close()
 
-send = Sender()
-listen = Listener()
 
-listen.start()
-
-send.main()
+print("Welcome.")
+print("Enter a username:")
+name = str(input())
+print("Enter an address to chat with.")
+host = str(input())
+send = Client()
+send.start()
+send.main(name, host)
