@@ -10,6 +10,8 @@ sock.bind((socket.gethostname(), 1551))
 sock.listen(1)
 conn, addr = sock.accept()
 
-while 1:
-    mess = conn.recv(1024)
-    print(str(mess.decode))
+def receiver():
+    while 1:
+        mess = conn.recv(1024)
+        print(str(mess.decode))
+
