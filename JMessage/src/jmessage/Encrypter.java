@@ -12,6 +12,9 @@ public class Encrypter {
     {
         String end = "";
         String[] x = message.split("");
+        //Get the ASCII value of each character in the array, then
+        //apply the encoder key. 
+        //Then change that number into a string and send it.
         /*
         for(int i = 0; i < x.length; i++)
         {
