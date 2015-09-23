@@ -9,8 +9,10 @@ public class Sender {
     public void run() throws IOException {
         //System.out.print("User name:");
         //String name = Resources.scan.nextLine();
-        System.out.print("IP:");
+        System.out.print("IP: ");
         String host = Resources.scan.nextLine();
+        System.out.print("Key: ");
+        Resources.en.key = Resources.scan.nextInt();
         Resources.sock = new Socket(host, 5441);
         PrintStream output;
         output = new PrintStream(Resources.sock.getOutputStream());
@@ -20,7 +22,7 @@ public class Sender {
                 System.exit(0);
             }
             message = ": " + message;
-            output.println(message);
+            output.println(Resources.en.encode(message));
         }
     }
 }

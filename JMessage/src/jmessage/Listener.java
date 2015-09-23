@@ -34,7 +34,7 @@ public class Listener extends Thread {
         while (true) {
             try {
                 String message = input.readLine();
-                System.out.println(message);
+                System.out.println(Resources.en.decode(message));
             } catch (IOException ex) {
                 Logger.getLogger(Listener.class.getName()).log(Level.SEVERE, null, ex);
             }
