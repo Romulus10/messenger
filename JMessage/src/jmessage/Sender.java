@@ -5,7 +5,7 @@ import java.io.PrintStream;
 import java.net.Socket;
 
 public class Sender {
-    
+
     public void run() throws IOException {
         //System.out.print("User name:");
         //String name = Resources.scan.nextLine();
