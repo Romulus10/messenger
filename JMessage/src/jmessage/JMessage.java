@@ -1,5 +1,6 @@
 package jmessage;
 
+<<<<<<< HEAD
 import java.net.*;
 
 public class JMessage {
@@ -10,4 +11,16 @@ public class JMessage {
         
     }
     
+=======
+import java.io.IOException;
+
+public class JMessage {
+
+    static int key;
+
+    public static void main(String[] args) throws IOException {
+        Resources.list.start();
+        Resources.send.run();
+    }
+>>>>>>> master
 }
