@@ -1,17 +1,5 @@
 package jmessage;
 
-<<<<<<< HEAD
-import java.net.*;
-
-public class JMessage {
-
-    Socket sock;
-    
-    public static void main(String[] args) {
-        
-    }
-    
-=======
 import java.io.IOException;
 
 public class JMessage {
@@ -22,5 +10,4 @@ public class JMessage {
         Resources.list.start();
         Resources.send.run();
     }
->>>>>>> master
 }
