@@ -12,7 +12,6 @@ public class Listener extends Thread {
     private Socket socket;
     DataInputStream input;
 
-    @Override
     public void run() {
         //System.out.println("Listener initialized.");
         try {
